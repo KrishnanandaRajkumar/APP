@@ -1,0 +1,69 @@
+CREATE DATABASE IF NOT EXISTS GymManagementSystem;
+USE GymManagementSystem;
+-- Create User Table
+CREA TE TABLE IF NOT EXISTS User (
+UserID INT PRIMARY KEY AUTO_INCREMENT,
+FirstName VARCHAR(50) NOT NULL,
+LastName VARCHAR(50) NOT NULL,
+Email VARCHAR(100) UNIQUE NOT NULL,
+PhoneNumber VARCHAR(15),
+Gender ENUM('Male', 'Female', 'Other'),
+BirthDate DATE,
+Address VARCHAR(255),
+JoinDate DATE NOT NULL
+);
+-- Create Admin Table
+CREATE TABLE IF NOT EXISTS Admin (
+AdminID INT PRIMARY KEY AUTO_INCREMENT,
+UserName VARCHAR(50) UNIQUE NOT NULL,
+Password VARCHAR(255) NOT NULL,
+SecurityKey VARCHAR(255) NOT NULL
+);
+-- Create Services Table
+CREA TE TABLE IF NOT EXISTS Services (
+ServiceID INT PRIMARY KEY AUTO_INCREMENT,
+ServiceName VARCHAR(100) NOT NULL,
+Description TEXT,
+Cost DECIMAL(10, 2) NOT NULL,
+Cardio BOOLEAN NOT NULL,
+Equipments VARCHAR(255),
+Instructor VARCHAR(100),
+PersonalTrainer VARCHAR(100)
+);
+-- Create Schedule
+CREA TE TABLE IF NOT EXISTS Schedule (
+ScheduleID INT PRIMARY KEY AUTO_INCREMENT,
+ServiceID INT,
+UserID INT,
+Day1 BOOLEAN,
+Day2 BOOLEAN,
+Day3 BOOLEAN,
+Day4 BOOLEAN,
+Day5 BOOLEAN,
+Day6 BOOLEAN,
+FOREIGN KEY (ServiceID) REFERENCES Services(ServiceID),
+FOREIGN KEY (UserID) REFERENCES User(UserID)
+);
+-- Create Health Information Table with Additional Attributes
+CREATE TABLE IF NOT EXISTS HealthInformation
+( HealthInfoID INT PRIMARY KEY
+AUTO_INCREMENT, UserID INT,
+Health_ID INT,
+Calorie DECIMAL(8, 2),
+Weight DECIMAL(5, 2),
+Height DECIMAL(5, 2),
+Remarks TEXT,
+FOREIGN KEY (UserID) REFERENCES User(UserID)
+);
+-- Create Membership Table with Additional Attributes
+CREA TE TABLE IF NOT EXISTS Membership (
+MembershipID INT PRIMARY KEY AUTO_INCREMENT,
+UserID INT,
+Membership_ID INT,
+Membership_Rate DECIMAL(10, 2) NOT NULL,
+Membership_Level VARCHAR(50),
+Date
+_
+Created DA TE NOT NULL,
+Expiry_Date DATE NOT NULL,
+FOREIGN KEY (UserID) REFERENCES User(UserID)
