@@ -1,0 +1,112 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Text Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .generated-texts {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .generated-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 10px;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <h1>Predictive Text Generator</h1>
+    </header>
+ 
+    <div class="container">
+        <h2>Generate Text</h2>
+        <input type="text" id="predictive-input" placeholder="Type here...">
+        <button onclick="generateText()">Generate Text</button>
+        <div class="generated-texts" id="generated-texts"></div>
+    </div>
+ 
+    <footer>
+        <p>&copy; 2023 Predictive Text Generator</p>
+    </footer>
+ 
+    <script>
+        function generateText() {
+            var predictiveInput = document.getElementById('predictive-input').value;
+            var generatedText1 = predictiveInput + ' drinking juice';
+            var generatedText2 = predictiveInput + ' is a good person';
+ 
+            var generatedTextsDiv = document.getElementById('generated-texts');
+           
+            var newGeneratedTextDiv1 = document.createElement('div');
+            newGeneratedTextDiv1.className = 'generated-text';
+            newGeneratedTextDiv1.innerHTML = '<strong>Generated Text:</strong> ' + generatedText1;
+           
+            var newGeneratedTextDiv2 = document.createElement('div');
+            newGeneratedTextDiv2.className = 'generated-text';
+            newGeneratedTextDiv2.innerHTML = '<strong>Generated Text:</strong> ' + generatedText2;
+ 
+            // Add the new generated texts to the list
+            generatedTextsDiv.appendChild(newGeneratedTextDiv1);
+            generatedTextsDiv.appendChild(newGeneratedTextDiv2);
+        }
+    </script>
+ 
+</body>
+</html>
